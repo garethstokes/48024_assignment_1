@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=RepositoryTests()
+comment1.params=
+comment1.target=void\ ShouldFindAllClients()
+comment2.params=
+comment2.target=void\ ShouldFindClientById()
+comment3.params=
+comment3.target=void\ ShouldFindAllBoats()
+comment4.params=
+comment4.target=void\ ShouldFindBoatByIndex()
+numComments=5
