@@ -8,10 +8,6 @@ public class Environment
         repository = repository;
     }
     
-    public StandardResponse makeBooking(String clientId, String boatIdx, int start, int end) {
-        return null;
-    }
-    
     public LinkedList<RouteResponse> run() {
         return null;
     }

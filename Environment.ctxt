@@ -1,8 +1,6 @@
 #BlueJ class context
 comment0.params=repository
 comment0.target=Environment(Repository)
-comment1.params=clientId\ boatIdx\ start\ end
-comment1.target=StandardResponse\ makeBooking(java.lang.String,\ java.lang.String,\ int,\ int)
-comment2.params=
-comment2.target=java.util.LinkedList\ run()
-numComments=3
+comment1.params=
+comment1.target=java.util.LinkedList\ run()
+numComments=2

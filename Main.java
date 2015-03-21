@@ -151,9 +151,16 @@ public class Main
     
     private void runBoats()
     {
-        environment.run();
+        LinkedList<RouteResponse> result = environment.run();
         
         // iterate through the results and 
         // format nicely for the console
+        for (RouteResponse route: result) {
+            System.out.print(route.boat.toString());
+            
+            for (RouteStop stop: route.stops) {
+                System.out.print("  " + stop.toString());
+            }
+        }
     }
 }

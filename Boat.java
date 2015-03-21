@@ -22,4 +22,8 @@ public class Boat
     public void addTrip(Trip trip) {
         trips.add(trip);
     }
+    
+    public String toString() {
+        return driver.id + " with " + driver.name;
+    }
 }

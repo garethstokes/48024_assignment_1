@@ -8,4 +8,9 @@ public class RouteStop
         direction = direction;
         client = client;
     }
+    
+    public String toString() {
+        String header = (direction == ClientDirection.ON) ? "On" : "Off";
+        return header + ": " + client.id;
+    }
 }
