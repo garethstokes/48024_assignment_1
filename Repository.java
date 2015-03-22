@@ -47,7 +47,8 @@ public class Repository
     
     public Client findClientById(String id) {
        for(Client client: clients) {
-            if (client.id == id) return client;
+           //System.out.println("client: " + client.id);
+           if (client.id.equals(id)) return client;
         }
         
         return null;
