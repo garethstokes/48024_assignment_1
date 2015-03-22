@@ -142,8 +142,10 @@ public class Main
         }
         
         System.out.print("    Trip: ");
-        int start   = In.nextInt();
-        int end     = In.nextInt();
+        String rawBooking = In.nextLine();
+        
+        int start   = Integer.parseInt( rawBooking.split(" ")[0] );
+        int end     = Integer.parseInt( rawBooking.split(" ")[1] );
         
         Trip trip = new Trip(client, start, end);
         boat.addTrip(trip);
