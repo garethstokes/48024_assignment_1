@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.params=direction\ client
-comment0.target=RouteStop(ClientDirection,\ Client)
-comment1.params=
-comment1.target=java.lang.String\ toString()
-numComments=2
