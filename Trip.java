@@ -6,7 +6,7 @@ public class Trip
     
     public Trip(Client client, int s, int e)
     {
-        client = client;
+        this.client = client;
         start = s;
         end = e;
     }

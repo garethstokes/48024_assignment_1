@@ -5,8 +5,8 @@ public class RouteStop
     
     public RouteStop(ClientDirection direction, Client client)
     {
-        direction = direction;
-        client = client;
+        this.direction = direction;
+        this.client = client;
     }
     
     public String toString() {
