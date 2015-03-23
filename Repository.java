@@ -71,7 +71,7 @@ public class Repository
     }
     
     public StandardResponse deleteClient(String name) {
-        Client client = findClientByName(name);
+        Client client = findClientById(name);
         if (client == null) return StandardResponse.Fail("No such client");
         
         clients.remove(client);

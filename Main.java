@@ -101,7 +101,7 @@ public class Main
     }
     
     private void removeClient() {
-        System.out.print("Name: ");
+        System.out.print("  Name: ");
         String name = In.nextLine();
         
         StandardResponse response = repository.deleteClient(name);
