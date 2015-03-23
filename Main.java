@@ -93,11 +93,11 @@ public class Main
     
     private void addClient() 
     {
-        System.out.print("Name: ");
+        System.out.print("  Name: ");
         String name = In.nextLine();
         
         Client client = repository.createClient(name);
-        System.out.println("  Hi " + client.name + ", you are " + client.id);
+        System.out.println("    Hi " + client.name + ", you are " + client.id);
     }
     
     private void removeClient() {
