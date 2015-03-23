@@ -21,5 +21,9 @@ public class TestRunner
         
         repo.ShouldFindAllBoats();
         repo.ShouldFindBoatByIndex();
+        
+        // Environment
+        EnvironmentTests environment = new EnvironmentTests();
+        environment.ShouldRunEnvironment();
     }
 }

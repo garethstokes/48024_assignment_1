@@ -10,7 +10,7 @@ public class RouteResponse
         stops   = new LinkedList<RouteStop>();
     }
     
-    public void AddStop(ClientDirection direction, Client client)
+    public void addStop(ClientDirection direction, Client client)
     {
         RouteStop stop = new RouteStop(direction, client);
         stops.add(stop);

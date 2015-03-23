@@ -17,6 +17,13 @@ public class Repository
         createBoat(3, new Driver(0, "Ed"));
         createBoat(6, new Driver(1, "Fred"));
         createBoat(5, new Driver(2, "Freda"));
+        
+        Client bart = createClient("Bart");
+        
+        Trip trip = new Trip(bart, 1, 2);
+        
+        Boat boat = findBoatByIndex(1);
+        boat.addTrip(trip);
     }
     
     /*
