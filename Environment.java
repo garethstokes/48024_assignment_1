@@ -5,7 +5,7 @@ public class Environment
     private Repository repository = null;
     
     public Environment(Repository repository) {
-        repository = repository;
+        this.repository = repository;
     }
     
     public LinkedList<RouteResponse> run() {
