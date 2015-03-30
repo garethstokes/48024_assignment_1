@@ -1,6 +1,7 @@
 import java.util.LinkedList;
+import java.io.*;
 
-public class Repository
+public class Repository implements Serializable
 {
     private LinkedList<Boat> boats;
     private LinkedList<Client> clients;
@@ -18,27 +19,13 @@ public class Repository
         createBoat(7, new Driver(1, "Fred"));
         createBoat(5, new Driver(2, "Freda"));
         
-        Client bart = createClient("Homer");
+        createClient("Homer");
         createClient("Marge");
         
         //Trip trip = new Trip(bart, 1, 2);
         
         //Boat boat = findBoatByIndex(1);
         //boat.addTrip(trip);
-    }
-    
-    /*
-     * Load models from disk
-     */
-    public boolean read() {
-        return false;
-    }
-    
-    /*
-     * Save models to disk
-     */
-    public boolean persist() {
-        return false;
     }
     
     public void resetBoats()
@@ -55,7 +42,7 @@ public class Repository
     
     public Client findClientByName(String name) {
         for(Client client: clients) {
-            if (client.name == name) return client;
+            if (client.name().equals(name)) return client;
         }
         
         return null;

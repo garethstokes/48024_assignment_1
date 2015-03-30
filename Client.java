@@ -1,4 +1,6 @@
-public class Client extends Person
+import java.io.*;
+
+public class Client extends Person implements Serializable
 {
    private String id;
    private double balance;
@@ -7,7 +9,7 @@ public class Client extends Person
    
    public Client(String name) {
        this.id = "10" + (counter);
-       this.name = name;
+       setName(name);
        balance = 100;
        
        counter += 1;

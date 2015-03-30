@@ -1,9 +1,16 @@
-public abstract class Person
+import java.io.*;
+
+public abstract class Person implements Serializable
 {
-    String name;
+    private String name;
     
     public String name()
     {
         return this.name;
+    }
+    
+    public void setName(String str)
+    {
+        this.name = str;
     }
 }

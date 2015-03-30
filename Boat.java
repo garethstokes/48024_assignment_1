@@ -1,6 +1,7 @@
 import java.util.LinkedList; 
+import java.io.*;
 
-public class Boat
+public class Boat implements Serializable
 {
     private int stops;
     private Driver driver;
@@ -24,7 +25,7 @@ public class Boat
     }
     
     public String toString() {
-        return driver.id + " with " + driver.name;
+        return driver.id + " with " + driver.name();
     }
     
     public int stops()

@@ -1,8 +1,10 @@
 import java.util.LinkedList;
 import java.text.*;
+import java.io.*;
 
 public class Root
 {
+    private Store store;
     private Repository repository;
     private Environment environment;
     
@@ -11,19 +13,25 @@ public class Root
     }
     
     public Root() {
-        repository  = new Repository();
+        store       = new Store();
+        repository  = store.read();
         environment = new Environment(repository);
 
-        // remove this later
-        repository.seed();
-        
         char c = choice();
         
         while (c != 'x') {
             if (c == 'f') {
                 // store and exit
-                System.out.println("store and exit");
-                repository.persist();
+                System.out.println("  Stored to file");
+                try
+                {
+                    store.persist();
+                }
+                catch(IOException e)
+                {
+                    System.out.println(e.toString());
+                }
+                return;
             }
             
             route(c);
@@ -83,7 +91,7 @@ public class Root
     {
         for(Client client: repository.allClients())
         {
-            System.out.println("  " + client.name + " (" + client.toString() + ") has $" + formatted(client.balance()));
+            System.out.println("  " + client.name() + " (" + client.toString() + ") has $" + formatted(client.balance()));
         }
     }
     
@@ -99,7 +107,7 @@ public class Root
         String name = In.nextLine();
         
         Client client = repository.createClient(name);
-        System.out.println("    Hi " + client.name + ", you are " + client.toString());
+        System.out.println("    Hi " + client.name() + ", you are " + client.toString());
     }
     
     private void removeClient() {
