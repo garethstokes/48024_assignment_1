@@ -2,10 +2,10 @@ import java.util.LinkedList;
 
 public class Boat
 {
-    public int stops;
-    public Driver driver;
-    public int capacity = 2;
-    public LinkedList<Trip> trips;
+    private int stops;
+    private Driver driver;
+    private int capacity = 2;
+    private LinkedList<Trip> trips;
     
     public Boat(Driver d, int s) {
         stops = s -1;
@@ -30,5 +30,15 @@ public class Boat
     public int stops()
     {
         return this.stops;
+    }
+    
+    public LinkedList<Trip> trips()
+    {
+        return this.trips;
+    }
+    
+    public void reset()
+    {
+        this.trips = new LinkedList<Trip>();
     }
 }

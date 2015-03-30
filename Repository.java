@@ -41,6 +41,14 @@ public class Repository
         return false;
     }
     
+    public void resetBoats()
+    {
+        for(Boat boat: boats)
+        {
+            boat.reset();
+        }
+    }
+    
     public LinkedList<Client> allClients() {
         return clients;
     }

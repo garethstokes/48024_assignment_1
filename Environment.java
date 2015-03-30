@@ -24,9 +24,9 @@ public class Environment
     {
         RouteResponse result = new RouteResponse(boat);
         
-        for (int stop = 0; stop <= boat.stops; stop++)
+        for (int stop = 0; stop <= boat.stops(); stop++)
         {
-            for (Trip trip: boat.trips)
+            for (Trip trip: boat.trips())
             {
                 Client client = trip.client;
                 if (stop == trip.start())

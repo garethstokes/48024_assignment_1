@@ -189,5 +189,7 @@ public class Root
                 System.out.println("    " + stop.toString());
             }
         }
+        
+        repository.resetBoats();
     }
 }
