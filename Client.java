@@ -1,11 +1,30 @@
 public class Client extends Person
 {
-   public String id;
-   public double balance;
+   private String id;
+   private double balance;
    
-   public Client(int index, String n) {
-       id = "Scuba10" + (index + 1);
-       name = n;
+   private static int counter = 1;
+   
+   public Client(String name) {
+       this.id = "10" + (counter);
+       this.name = name;
        balance = 100;
+       
+       counter += 1;
+   }
+   
+   public String id()
+   {
+       return this.id;
+   }
+    
+   public double balance()
+   {
+       return this.balance;
+   }
+   
+   public String toString()
+   {
+       return "Scuba" + id;
    }
 }

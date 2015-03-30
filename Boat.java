@@ -26,4 +26,9 @@ public class Boat
     public String toString() {
         return driver.id + " with " + driver.name;
     }
+    
+    public int stops()
+    {
+        return this.stops;
+    }
 }

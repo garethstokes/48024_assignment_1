@@ -1,4 +1,9 @@
 public abstract class Person
 {
-    public String name;
+    String name;
+    
+    public String name()
+    {
+        return this.name;
+    }
 }

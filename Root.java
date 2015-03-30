@@ -1,23 +1,22 @@
 import java.util.LinkedList;
 import java.text.*;
 
-public class Main
+public class Root
 {
     private Repository repository;
     private Environment environment;
     
     public static void main(String[] args) {
-        new Main();
+        new Root();
     }
     
-    public Main() {
+    public Root() {
         repository  = new Repository();
         environment = new Environment(repository);
 
         // remove this later
         repository.seed();
         
-        menu();
         char c = choice();
         
         while (c != 'x') {
@@ -58,6 +57,9 @@ public class Main
                 //System.out.println("show the clients");
                 showClients();
                 return;
+               
+            default:
+                menu();
         }
     }
     
@@ -81,7 +83,7 @@ public class Main
     {
         for(Client client: repository.allClients())
         {
-            System.out.println(client.name + " (" + client.id + ") has $" + formatted(client.balance));
+            System.out.println("  " + client.name + " (" + client.toString() + ") has $" + formatted(client.balance()));
         }
     }
     
@@ -97,7 +99,7 @@ public class Main
         String name = In.nextLine();
         
         Client client = repository.createClient(name);
-        System.out.println("    Hi " + client.name + ", you are " + client.id);
+        System.out.println("    Hi " + client.name + ", you are " + client.toString());
     }
     
     private void removeClient() {
@@ -108,7 +110,7 @@ public class Main
         
         if (response.status == ResponseStatus.FAIL)
         {
-            System.out.println(response.message);
+            System.out.println("  " + response.message);
         }
     }
     
@@ -119,25 +121,26 @@ public class Main
         
         Boat boat = repository.findBoatByIndex(index);
         if (boat == null) {
-            System.out.println("No such boat");
+            System.out.println("  No such boat");
             return;
         }
         
         if (boat.spotsLeft() < 1) {
-            System.out.println("Boat is full");
+            System.out.println("  Boat is full");
             return;
         }
         
+        System.out.println("  Stops 0-" + boat.stops());
         System.out.print("  Scuba id: ");
         
-        Client client = repository.findClientById(In.nextLine());
+        Client client = repository.findClientByNameAndId(In.nextLine());
         if (client == null) {
-            System.out.println("No such client");
+            System.out.println("  No such client");
             return;
         }
         
-        if (client.balance <= 0) {
-            System.out.println("The client has no or negative money");
+        if (client.balance() <= 0) {
+            System.out.println("  The client has no or negative money");
             return;
         }
         

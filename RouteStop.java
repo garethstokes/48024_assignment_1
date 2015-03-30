@@ -11,6 +11,6 @@ public class RouteStop
     
     public String toString() {
         String header = (direction == ClientDirection.ON) ? "On" : "Off";
-        return header + ": " + client.id;
+        return header + ": " + client.id();
     }
 }

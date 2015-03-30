@@ -18,12 +18,13 @@ public class Repository
         createBoat(6, new Driver(1, "Fred"));
         createBoat(5, new Driver(2, "Freda"));
         
-        Client bart = createClient("Bart");
+        Client bart = createClient("Homer");
+        createClient("Marge");
         
-        Trip trip = new Trip(bart, 1, 2);
+        //Trip trip = new Trip(bart, 1, 2);
         
-        Boat boat = findBoatByIndex(1);
-        boat.addTrip(trip);
+        //Boat boat = findBoatByIndex(1);
+        //boat.addTrip(trip);
     }
     
     /*
@@ -55,7 +56,24 @@ public class Repository
     public Client findClientById(String id) {
        for(Client client: clients) {
            //System.out.println("client: " + client.id);
-           if (client.id.equals(id)) return client;
+           if (client.id().equals(id)) return client;
+        }
+        
+        return null;
+    }
+    
+    public Client findClientByNameAndId(String key)
+    {
+        for(Client client: clients) {
+           //System.out.println("client: " + client.id);
+           //if (client.id.equals(id)) return client;
+           if (key.startsWith(client.name()))
+           {
+               String id = key.split(client.name())[1];
+               //System.out.println("id: " + id);
+               
+               if (client.id().equals(id)) return client;
+           }
         }
         
         return null;
@@ -63,15 +81,15 @@ public class Repository
     
     public Client createClient(String name) {
         int index       = clients.size();
-        Client client   = new Client(index, name);
+        Client client   = new Client(name);
         
         clients.add(client);
         
         return client;
     }
     
-    public StandardResponse deleteClient(String name) {
-        Client client = findClientById(name);
+    public StandardResponse deleteClient(String key) {
+        Client client = findClientByNameAndId(key);
         if (client == null) return StandardResponse.Fail("No such client");
         
         clients.remove(client);
@@ -80,6 +98,7 @@ public class Repository
 
     
     public Boat findBoatByIndex(int index) {
+        if (index > boats.size()) return null;
         return boats.get(index);
     }
    
