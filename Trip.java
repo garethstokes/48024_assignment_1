@@ -1,8 +1,8 @@
 public class Trip
 {
     public Client client;
-    public int start;
-    public int end;
+    private int start;
+    private int end;
     
     public Trip(Client client, int s, int e)
     {
@@ -10,4 +10,7 @@ public class Trip
         start = s;
         end = e;
     }
+    
+    public int start() { return this.start; }
+    public int end() { return this.end; }
 }

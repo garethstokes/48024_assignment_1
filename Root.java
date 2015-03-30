@@ -114,6 +114,22 @@ public class Root
         }
     }
     
+    private Client getClient()
+    {
+        System.out.print("  Scuba id: ");
+        String id = In.nextLine();
+        
+        if (id.equals("x")) return null;
+        
+        Client client = repository.findClientById(id);
+        if (client == null) {
+            System.out.println("  No such client");
+            getClient();
+        }
+        
+        return client;
+    }
+    
     private void makeBooking()
     {
         System.out.print("Boat: ");
@@ -130,28 +146,31 @@ public class Root
             return;
         }
         
+
         System.out.println("  Stops 0-" + boat.stops());
-        System.out.print("  Scuba id: ");
+        Client client = getClient();
         
-        Client client = repository.findClientByNameAndId(In.nextLine());
-        if (client == null) {
-            System.out.println("  No such client");
-            return;
+        while (client != null)
+        {
+            if (client == null) return;
+        
+            if (client.balance() <= 0) {
+                System.out.println("  The client has no or negative money");
+                return;
+            }
+            
+            System.out.print("    Trip: ");
+            String rawBooking = In.nextLine();
+            
+            int start   = Integer.parseInt( rawBooking.split(" ")[0] );
+            int end     = Integer.parseInt( rawBooking.split(" ")[1] );
+            
+            Trip trip = new Trip(client, start, end);
+            boat.addTrip(trip);
+            
+            client = getClient();
         }
         
-        if (client.balance() <= 0) {
-            System.out.println("  The client has no or negative money");
-            return;
-        }
-        
-        System.out.print("    Trip: ");
-        String rawBooking = In.nextLine();
-        
-        int start   = Integer.parseInt( rawBooking.split(" ")[0] );
-        int end     = Integer.parseInt( rawBooking.split(" ")[1] );
-        
-        Trip trip = new Trip(client, start, end);
-        boat.addTrip(trip);
     }
     
     private void runBoats()
@@ -161,10 +180,13 @@ public class Root
         // iterate through the results and 
         // format nicely for the console
         for (RouteResponse route: result) {
-            System.out.print(route.boat.toString());
+            if (route.stopsCount() == 0) continue;
+            
+            System.out.println(route.boat.toString());
             
             for (RouteStop stop: route.stops) {
-                System.out.print("  " + stop.toString());
+                System.out.println("  Stop " + stop.index());
+                System.out.println("    " + stop.toString());
             }
         }
     }

@@ -15,7 +15,7 @@ public class Repository
      */
     public void seed() {
         createBoat(3, new Driver(0, "Ed"));
-        createBoat(6, new Driver(1, "Fred"));
+        createBoat(7, new Driver(1, "Fred"));
         createBoat(5, new Driver(2, "Freda"));
         
         Client bart = createClient("Homer");
@@ -98,8 +98,8 @@ public class Repository
 
     
     public Boat findBoatByIndex(int index) {
-        if (index > boats.size()) return null;
-        return boats.get(index);
+        if (index >= boats.size()) return null;
+        return boats.get(index - 1);
     }
    
     public Boat createBoat(int stops, Driver driver) {

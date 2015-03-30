@@ -8,7 +8,7 @@ public class Boat
     public LinkedList<Trip> trips;
     
     public Boat(Driver d, int s) {
-        stops = s;
+        stops = s -1;
         driver = d;
         
         trips = new LinkedList<Trip>();

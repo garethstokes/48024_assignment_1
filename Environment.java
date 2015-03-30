@@ -24,19 +24,19 @@ public class Environment
     {
         RouteResponse result = new RouteResponse(boat);
         
-        for (int stop = 0; stop < boat.stops; stop++)
+        for (int stop = 0; stop <= boat.stops; stop++)
         {
             for (Trip trip: boat.trips)
             {
                 Client client = trip.client;
-                if (stop == trip.start)
+                if (stop == trip.start())
                 {
-                    result.addStop(ClientDirection.ON, client);
+                    result.addStop(ClientDirection.ON, client, stop);
                 }
                 
-                if (stop == trip.start)
+                if (stop == trip.end())
                 {
-                    result.addStop(ClientDirection.OFF, client);
+                    result.addStop(ClientDirection.OFF, client, stop);
                 }
             }
         }

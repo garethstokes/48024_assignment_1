@@ -1,16 +1,44 @@
+import java.util.*;
+
 public class RouteStop
 {
-    public ClientDirection direction;
-    public Client client;
+    private ClientDirection direction;
+    private LinkedList<Client> clients;
+    private int index;
     
-    public RouteStop(ClientDirection direction, Client client)
+    public RouteStop(ClientDirection direction, Client client, int index)
     {
         this.direction = direction;
-        this.client = client;
+        this.index = index;
+        
+        this.clients = new LinkedList<Client>();
+        this.clients.add(client);
     }
+    
+   public void addClient(Client client)
+   {
+       this.clients.add(client);
+   }
     
     public String toString() {
         String header = (direction == ClientDirection.ON) ? "On" : "Off";
-        return header + ": " + client.id();
+        return header + ": " + showClients();
+    }
+    
+    public String showClients()
+    {
+        String result = "";
+        
+        for(Client client: clients)
+        {
+            result += client.name() + client.id() + " ";
+        }
+        
+        return result.trim();
+    }
+    
+    public int index()
+    {
+        return this.index;
     }
 }
