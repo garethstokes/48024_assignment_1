@@ -98,7 +98,7 @@ public class Repository
 
     
     public Boat findBoatByIndex(int index) {
-        if (index >= boats.size()) return null;
+        if (index > boats.size()) return null;
         return boats.get(index - 1);
     }
    
