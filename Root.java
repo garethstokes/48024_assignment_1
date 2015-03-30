@@ -155,8 +155,9 @@ public class Root
             if (client == null) return;
         
             if (client.balance() <= 0) {
-                System.out.println("  The client has no or negative money");
-                return;
+                System.out.println("  No money");
+                client = getClient();
+                continue;
             }
             
             System.out.print("    Trip: ");

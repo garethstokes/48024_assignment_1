@@ -23,12 +23,14 @@ public class Environment
     public RouteResponse GetRouteResponseFrom(Boat boat) 
     {
         RouteResponse result = new RouteResponse(boat);
-        
         for (int stop = 0; stop <= boat.stops(); stop++)
         {
+            int count = 0;
             for (Trip trip: boat.trips())
             {
                 Client client = trip.client;
+                trip.isCharged = false;
+                
                 if (stop == trip.start())
                 {
                     result.addStop(ClientDirection.ON, client, stop);
@@ -37,7 +39,24 @@ public class Environment
                 if (stop == trip.end())
                 {
                     result.addStop(ClientDirection.OFF, client, stop);
+                    
                 }
+                
+                
+                if (trip.start() <= stop && trip.end() > stop)
+                {
+                    count++;
+                    trip.isCharged = true;
+                }
+              
+            }
+            
+            if (count == 0) continue;
+            
+            for(Trip trip: boat.trips())
+            {
+                if (!trip.isCharged) continue;
+                trip.client.charge(10 / count);
             }
         }
         

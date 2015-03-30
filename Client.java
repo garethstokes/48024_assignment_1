@@ -27,4 +27,9 @@ public class Client extends Person
    {
        return "Scuba" + id;
    }
+   
+   public void charge(double amount)
+   {
+       this.balance -= amount;
+   }
 }
